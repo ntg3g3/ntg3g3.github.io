@@ -107,59 +107,56 @@ export const projects: Project[] = [
     role: "Game Design / Level Design / Asymmetric Co-op",
     subtitle: "HCII Research | Summer 2022",
     summary:
-      "A turn-based asymmetric co-op game for Human-Machine Teaming research, where players coordinate through partial information, pins, and character-specific dice.",
+      "A turn-based asymmetric co-op game for Human-Machine Teaming research.",
     description: [
-      "In Summer 2022, I was hired as a game designer by the ARL STRONG lab at CMU to design and develop an asymmetric co-op game for Human-Machine Teaming studies.",
-      "Dice Adventure turns that research need into a controllable dungeon system: three characters move through the same space with different vision ranges, dice affordances, and information access.",
-      "The prototype creates observable collaboration moments through movement choices, non-verbal pings, dice checks, tutorial levels, and team planning around hidden information."
+      "Designed for CMU HCII / ARL STRONG lab research on Human-Machine Teaming.",
+      "Players coordinate through partial information, pings, character-specific dice, and tutorial levels."
     ],
-    deliverables: "A multiplayer asymmetric co-op game designed for human-machine teaming studies.",
+    deliverables: "Playable asymmetric co-op research prototype.",
     timeSpan: "6/21/2022 - present",
     team: ["Yutao Huang", "Pheobe Wang", "Jingyuan Fang"],
     impacts: [
-      "Researched existing co-op games and board games, then proposed several game concepts to the team.",
-      "Communicated with the collaborating research team to understand research needs and transform them into in-game features.",
-      "Worked closely with the artist and programmer while helping manage project progress.",
-      "Finished the level designs and tutorial stages.",
-      "Arranged playtests, collected feedback, and listed existing bugs."
+      "Translated research needs into playable co-op mechanics.",
+      "Designed asymmetric roles, dice checks, and ping communication.",
+      "Built level and tutorial structures for staged learning.",
+      "Coordinated with artist, programmer, and research collaborators.",
+      "Ran playtests, collected feedback, and tracked bugs."
     ],
     caseStudySections: [
       {
         id: "research",
         label: "Research",
         eyebrow: "Research Constraint",
-        title: "Designing for observable cooperation",
+        title: "Research-shaped co-op",
         body: [
-          "The project was built for Human-Machine Teaming studies, so the design could not rely only on fun dungeon encounters. It needed to make uncertainty, communication, and coordination visible enough for researchers to observe.",
-          "That pushed the game toward partial information, non-verbal communication, turn-based planning, and mechanics that create clear decision points without forcing players to speak aloud."
+          "The game needed to make uncertainty, communication, and planning visible through player actions."
         ],
-        callout: "Research need: create a playable co-op game where collaboration, uncertainty, and information sharing can be observed through player actions."
+        callout: "Design prompt: make cooperation observable."
       },
       {
         id: "system",
         label: "System",
         eyebrow: "System Design",
-        title: "Turning research constraints into mechanics",
+        title: "Mechanics as evidence",
         body: [
-          "The core system uses three asymmetric characters: dwarf, human, and giant. Each character sees and acts differently, so players need to coordinate based on incomplete but complementary information.",
-          "Dice checks convert obstacles into compact strategic problems. Rocks, monsters, and traps each ask for different roll conditions, which lets the same interaction language teach different kinds of risk and planning."
+          "Different roles, visibility, pings, and dice rules create small but readable collaboration moments."
         ],
         variant: "grid",
         media: [
           {
             src: "/images/projects/dice-adventure/gallery-02.webp",
             alt: "Dice Adventure movement state diagram showing move, confirm, cancel, and possible destination states.",
-            caption: "Movement UX specification: previewing possible destinations before committing an action."
+            caption: "Movement preview and confirmation states."
           },
           {
             src: "/images/projects/dice-adventure/gallery-03.webp",
             alt: "Dice Adventure combat prompt asking the player to roll matching numbers to kill monsters.",
-            caption: "Combat rule: matching target numbers turns a monster encounter into a readable dice check."
+            caption: "Combat asks for matching dice values."
           },
           {
             src: "/images/projects/dice-adventure/gallery-04.webp",
             alt: "Dice Adventure trap prompt asking the player to roll smaller than 3 to break the trap.",
-            caption: "Trap rule: inverted thresholds vary the decision pattern while keeping the UI language consistent."
+            caption: "Trap interaction changes the dice condition."
           }
         ]
       },
@@ -167,17 +164,16 @@ export const projects: Project[] = [
         id: "levels",
         label: "Levels",
         eyebrow: "Level and Tutorial Design",
-        title: "Teaching cooperation through level progression",
+        title: "Levels teach the rules",
         body: [
-          "My level work focused on introducing mechanics gradually: movement, obstacles, monsters, altars, gates, and the collaboration patterns needed to solve them together.",
-          "The grid layouts helped the team reason about character starts, visibility, route choices, and encounter pacing before those decisions entered the digital prototype."
+          "Grid maps staged movement, obstacles, altars, gates, and teamwork in a controlled progression."
         ],
         variant: "wide",
         media: [
           {
             src: "/images/projects/dice-adventure/gallery-01.webp",
             alt: "Dice Adventure level and tutorial layout diagrams with grid maps, character starts, obstacles, and targets.",
-            caption: "Level and tutorial planning maps used to stage encounters, routes, and mechanic introduction."
+            caption: "Tutorial and level planning maps."
           }
         ]
       },
@@ -185,17 +181,16 @@ export const projects: Project[] = [
         id: "prototype",
         label: "Prototype",
         eyebrow: "Prototype Evolution",
-        title: "From paper systems to a digital research prototype",
+        title: "Prototype direction",
         body: [
-          "The design process moved from precedent research and physical board-game thinking into a digital dungeon prototype. That path kept the mechanics concrete: tokens, tiles, dice, roles, and turn states all had to become playable rules.",
-          "As the prototype matured, the work shifted toward interaction clarity: showing whose turn it is, how many actions remain, what can be reached, and which dice condition applies to the next obstacle."
+          "The digital build kept the board-game clarity: turn state, team status, reachable spaces, and dice prompts."
         ],
         variant: "split",
         media: [
           {
             src: "/images/projects/dice-adventure/cover.webp",
             alt: "Dice Adventure digital prototype showing the rock dice rule prompt, characters, action icons, hearts, and dungeon grid.",
-            caption: "Final prototype UI: turn state, team status, map context, and an in-world dice rule presented at the moment of action."
+            caption: "Final prototype UI with turn state, team status, and dice prompt."
           }
         ]
       },
@@ -203,12 +198,11 @@ export const projects: Project[] = [
         id: "reflection",
         label: "Reflection",
         eyebrow: "Research Fit",
-        title: "A game system built to reveal collaboration",
+        title: "Research fit",
         body: [
-          "Dice Adventure does not claim final study results on this page. Its design value is in the structure it creates: players must make plans with partial information, signal intent, manage risk, and adapt to what the team discovers.",
-          "For a research prototype, those moments matter. They give collaborators a playable environment where human-human and human-AI teaming questions can be explored through concrete game decisions."
+          "The design creates moments where players plan, signal intent, manage risk, and adapt to hidden information."
         ],
-        callout: "Designed to make communication and uncertainty visible without turning the experience into a survey."
+        callout: "Playable first, research-readable second."
       }
     ],
     mediaHint: "Background.png"
