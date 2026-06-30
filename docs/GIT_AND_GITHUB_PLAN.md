@@ -36,7 +36,9 @@ The optimized deployable images in `public/images/projects` should be committed.
 3. Create the first commit.
 4. Create a private GitHub repository.
 5. Push the local repository to GitHub.
-6. Connect Vercel/Netlify/Cloudflare Pages to GitHub.
+6. Make the GitHub repository public.
+7. Prefer GitHub Pages for the first public deployment.
+8. Use Vercel/Netlify/Cloudflare Pages only if a later requirement needs them.
 
 ## First Commit Scope
 

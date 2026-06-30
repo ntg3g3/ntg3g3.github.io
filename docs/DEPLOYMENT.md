@@ -24,9 +24,44 @@ pnpm
 
 ## Recommended Provider
 
-Use Vercel or Netlify for the first public preview. Both are straightforward for Astro and support custom domains.
+Use GitHub Pages first. This keeps the personal site on the same platform as the source repository and avoids adding a third-party hosting service before it is needed.
 
-Cloudflare Pages is also a strong option if `taogames.online` will be managed through Cloudflare DNS.
+Vercel, Netlify, and Cloudflare Pages remain good fallback options if GitHub Pages cannot meet a later requirement.
+
+## GitHub Pages Settings
+
+Recommended repository shape:
+
+```text
+ntg3g3.github.io
+```
+
+That user-site repository publishes at the root path, which matches the current Astro config and makes a later `taogames.online` custom domain simpler.
+
+Pages source:
+
+```text
+GitHub Actions
+```
+
+Workflow file:
+
+```text
+.github/workflows/deploy-github-pages.yml
+```
+
+The workflow installs dependencies with pnpm, runs `pnpm run build`, uploads `dist`, and deploys to GitHub Pages.
+
+## Legacy Routes
+
+GitHub Pages does not use `vercel.json` or Netlify `_redirects`. To keep old Wix URLs from breaking, the site generates static redirect pages from:
+
+```text
+src/data/legacyRedirects.ts
+src/pages/[legacy].astro
+```
+
+These are HTML refresh redirects rather than server-side 301 redirects, but they keep visitors from landing on a broken page.
 
 ## Vercel Settings
 
@@ -35,14 +70,14 @@ Cloudflare Pages is also a strong option if `taogames.online` will be managed th
 - Output directory: `dist`
 - Install command: `pnpm install`
 
-The repository includes `vercel.json` for clean URLs and primary old-route redirects.
+The repository includes `vercel.json` only as an optional fallback for Vercel.
 
 ## Netlify Settings
 
 - Build command: `pnpm run build`
 - Publish directory: `dist`
 
-The repository includes `public/_redirects`, which Astro copies into `dist`.
+The repository includes `public/_redirects` only as an optional fallback for Netlify.
 
 ## Domain Migration
 

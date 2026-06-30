@@ -1,0 +1,26 @@
+---
+import { legacyRedirects } from "../data/legacyRedirects";
+
+export function getStaticPaths() {
+  return legacyRedirects.map((redirect) => ({
+    params: { legacy: redirect.source },
+    props: { destination: redirect.destination }
+  }));
+}
+
+const { destination } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${destination}`} />
+    <link rel="canonical" href={destination} />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href={destination}>{destination}</a>.</p>
+  </body>
+</html>
