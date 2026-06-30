@@ -2,7 +2,9 @@
 
 ## Goal
 
-Move from a functional static site to a portfolio that understands and presents each project clearly.
+Migrate the original Wix portfolio structure into a self-owned static site, then update project weighting to match Yutao's current career stage.
+
+The site should not feel like a brand-new generic portfolio template. It should preserve the old site's image-led layout rhythm, project hierarchy, and light text style while improving hosting, maintainability, image quality, and current professional positioning.
 
 ## Skills
 
@@ -54,14 +56,30 @@ Recommended automation:
 
 This project should become a Git repository before deployment. GitHub-based hosting is the right end state, but local Git should be initialized first so the work has checkpoints before connecting a deployment provider.
 
-## Pilot
+## Current Direction
 
-Pilot projects:
-1. Dice Adventure
-2. CAVERN
+Primary layout reference:
+- Keep the original Wix site's structure and visual logic.
+- Use large images and sparse text.
+- Let words provide context for image groups rather than become the main content.
+- Preserve the old Home / Game Projects / Experience Projects / Archive hierarchy.
+
+Professional weighting:
+- Skyweaver remains the largest public work-project signal.
+- Last Trigger / previous IGG work can be added after public-safe name, imagery, and links are confirmed.
+- The current unannounced project should not be shown as a project page.
+- Resume information can update About and positioning, but confidential project details stay off the site.
+
+## Implementation Priority
+
+1. Rebuild Home to preserve the original Wix layout hierarchy.
+2. Keep Skyweaver visually dominant until Last Trigger public assets are confirmed.
+3. Rework Dice Adventure back toward its original image-led page structure.
+4. Apply the same image-first migration approach to CAVERN and Project Amazon.
+5. Only then tune case-study text and SEO.
 
 Success criteria:
-- Project page explains what the project is in the first screen.
-- My role is visible early.
-- Diagrams and process images are placed near the text they support.
-- Page feels closer to the original Wix case-study style than a generic card/detail layout.
+- The page feels like a faithful migration of Tao's old site, not a replacement template.
+- Main project hierarchy matches professional relevance.
+- Images carry the page; text is short and contextual.
+- Old routes and public deployment continue to work.

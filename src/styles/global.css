@@ -95,6 +95,7 @@ nav a:hover {
 }
 
 .hero,
+.home-intro,
 .page-intro,
 .section-block,
 .project-detail,
@@ -110,6 +111,14 @@ nav a:hover {
   gap: 28px;
   align-items: stretch;
   padding: 72px 0 56px;
+}
+
+.home-intro {
+  padding: 72px 0 24px;
+}
+
+.home-intro .hero-copy {
+  max-width: 840px;
 }
 
 .hero-copy h1,
@@ -265,6 +274,78 @@ nav a:hover {
 
 .section-block {
   padding: 34px 0 52px;
+}
+
+.professional-feature {
+  padding-top: 12px;
+}
+
+.skyweaver-feature {
+  position: relative;
+  display: grid;
+  min-height: 560px;
+  overflow: hidden;
+  align-items: end;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.skyweaver-feature img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skyweaver-feature::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, rgba(23, 23, 23, 0.02), rgba(23, 23, 23, 0.78));
+}
+
+.skyweaver-feature div {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  padding: 28px;
+}
+
+.skyweaver-feature h3 {
+  margin: 0 0 12px;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.skyweaver-feature p {
+  color: rgba(251, 250, 247, 0.78);
+  line-height: 1.65;
+}
+
+.skyweaver-feature .eyebrow {
+  color: var(--gold);
+}
+
+.professional-note {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.featured-game-grid {
+  margin-bottom: 18px;
+}
+
+.secondary-project-grid .project-card .project-media {
+  min-height: 170px;
 }
 
 .section-heading {
@@ -675,6 +756,7 @@ nav a:hover {
   .site-header,
   .site-footer,
   .hero,
+  .home-intro,
   .page-intro,
   .section-block,
   .project-detail,
@@ -718,9 +800,14 @@ nav a:hover {
 
   .hero-panel,
   .showcase-main,
+  .skyweaver-feature,
   .project-media.large,
   .case-study-hero .project-media.large {
     min-height: 280px;
+  }
+
+  .skyweaver-feature div {
+    padding: 18px;
   }
 
   .case-study-section {

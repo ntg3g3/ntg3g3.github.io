@@ -3,49 +3,63 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectCard from "@/components/project/ProjectCard.astro";
 import { projects } from "@/data/projects";
 
-const gameProjects = projects.filter((project) => project.category === "game");
+const skyweaver = projects.find((project) => project.slug === "skyweaver");
+const gameProjects = projects.filter((project) => project.category === "game" && project.slug !== "skyweaver");
 const experienceProjects = projects.filter((project) => project.category === "experience");
-const featured = projects.filter((project) => project.featured);
+const highlightedGames = ["cavern", "project-amazon", "dice-adventure"]
+  .map((slug) => projects.find((project) => project.slug === slug))
+  .filter(Boolean);
 ---
 
 <BaseLayout title="Home" path="/">
-  <section class="hero">
+  <section class="home-intro">
     <div class="hero-copy">
-      <p class="eyebrow">Game designer / Experience designer</p>
+      <p class="eyebrow">Gameplay / Systems Designer</p>
       <h1>Tao Design</h1>
       <p>
-        Hello! I'm Tao, a game designer specializing in game design and experience design.
-        After graduating from Carnegie Mellon's Entertainment Technology Center, I worked on
-        Skyweaver and continue building playful interactive experiences.
+        Hello! I'm Tao, a gameplay and systems designer focused on player progression,
+        mechanics, UX flow, and interactive systems.
       </p>
       <div class="hero-actions">
         <a class="button primary" href="/archive/">View Archive</a>
         <a class="button" href="/about/">About Me</a>
       </div>
     </div>
-    <div class="hero-showcase" aria-label="Featured project preview">
-      <a class="showcase-main" href="/projects/cavern/">
-        <img src="/images/projects/cavern/cover.webp" alt="" />
-        <span>CAVERN</span>
-      </a>
-      <div class="showcase-stack">
-        {featured.map((project) => (
-          <a href={`/projects/${project.slug}/`}>
-            <img src={`/images/projects/${project.slug}/cover.webp`} alt="" />
-            <span>{project.title}</span>
-          </a>
-        ))}
-      </div>
-    </div>
   </section>
+
+  {skyweaver && (
+    <section class="section-block professional-feature">
+      <div class="section-heading">
+        <p class="eyebrow">Professional Work</p>
+        <h2>Skyweaver</h2>
+      </div>
+      <a class="skyweaver-feature" href={skyweaver.externalLinks?.[0]?.href ?? "/projects/skyweaver/"}>
+        <img src="/images/projects/skyweaver/cover.webp" alt="" />
+        <div>
+          <p class="eyebrow">Junior Game Designer / Strategy TCG</p>
+          <h3>{skyweaver.title}</h3>
+          <p>{skyweaver.summary}</p>
+        </div>
+      </a>
+      <p class="professional-note">
+        Recent systems design work after Skyweaver will be added only where public-safe project names,
+        store pages, or approved visuals are available.
+      </p>
+    </section>
+  )}
 
   <section class="section-block">
     <div class="section-heading">
-      <p class="eyebrow">Selected work</p>
+      <p class="eyebrow">Selected student and research work</p>
       <h2>Game Projects</h2>
     </div>
-    <div class="project-grid">
-      {gameProjects.map((project) => <ProjectCard project={project} />)}
+    <div class="project-grid featured-game-grid">
+      {highlightedGames.map((project) => project && <ProjectCard project={project} />)}
+    </div>
+    <div class="project-grid secondary-project-grid">
+      {gameProjects
+        .filter((project) => !highlightedGames.includes(project))
+        .map((project) => <ProjectCard project={project} compact />)}
     </div>
   </section>
 
