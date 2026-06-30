@@ -1,0 +1,4 @@
+interface:
+  display_name: "Case Study Layout Designer"
+  short_description: "Design portfolio case-study page layouts"
+  default_prompt: "Use $case-study-layout-designer to plan and refine portfolio case-study page structure, rhythm, and visual hierarchy."

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Personal Website Migration"
+  short_description: "Rebuild a Wix portfolio as a static site"
+  default_prompt: "Use $personal-website-migration to rebuild taogames.online as a self-owned static portfolio site."
+policy:
+  allow_implicit_invocation: true

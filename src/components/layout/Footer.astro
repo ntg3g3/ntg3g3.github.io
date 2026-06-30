@@ -1,0 +1,14 @@
+---
+import { site } from "@/data/site";
+---
+
+<footer class="site-footer">
+  <div>
+    <strong>{site.author}</strong>
+    <p>Game design, experience design, and interactive systems.</p>
+  </div>
+  <address>
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+    <span>{site.phone}</span>
+  </address>
+</footer>

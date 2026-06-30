@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.tmp-appdata/
+.pnpm-store/
+.dev-server*.log
+
+# Large local Wix source assets. Optimized web assets live in public/images.
+assets/wix-originals/

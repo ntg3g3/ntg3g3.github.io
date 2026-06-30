@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Content Interpreter"
+  short_description: "Interpret portfolio diagrams and project content"
+  default_prompt: "Use $portfolio-content-interpreter to turn project pages, screenshots, and diagrams into structured case-study content."

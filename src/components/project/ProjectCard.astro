@@ -1,0 +1,25 @@
+---
+import type { Project } from "@/data/projects";
+
+type Props = {
+  project: Project;
+  compact?: boolean;
+};
+
+const { project, compact = false } = Astro.props;
+const projectHref = project.externalLinks?.[0]?.href ?? `/projects/${project.slug}/`;
+const coverSrc = `/images/projects/${project.slug}/cover.webp`;
+---
+
+<article class:list={["project-card", { compact }]}>
+  <a class="project-media" href={projectHref}>
+    <img src={coverSrc} alt="" loading="lazy" />
+    <span>{project.title}</span>
+  </a>
+  <div class="project-body">
+    <p class="eyebrow">{project.role}</p>
+    <h3><a href={projectHref}>{project.title}</a></h3>
+    <p>{project.summary}</p>
+    {project.mediaHint && <small>Asset cue: {project.mediaHint}</small>}
+  </div>
+</article>

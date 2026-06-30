@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Project Manager"
+  short_description: "Manage portfolio rebuild tasks and priorities"
+  default_prompt: "Use $portfolio-project-manager to coordinate the PersonalWebsite portfolio rebuild, tasks, handoffs, and acceptance checks."

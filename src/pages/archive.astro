@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/project/ProjectCard.astro";
+import { projects } from "@/data/projects";
+
+const archiveProjects = projects.filter((project) => project.category === "archive");
+---
+
+<BaseLayout
+  title="Archive"
+  description="Past product design, UX design, architecture, art, and craft projects from Tao Design."
+  path="/archive/"
+>
+  <section class="page-intro">
+    <p class="eyebrow">Archive</p>
+    <h1>Past projects across product, UX, art, and craft.</h1>
+    <p>
+      Here are projects from earlier practice, including product design, UX design,
+      architecture, photography, and hands-on craft work.
+    </p>
+  </section>
+
+  <section class="project-grid archive-grid">
+    {archiveProjects.map((project) => <ProjectCard project={project} />)}
+  </section>
+</BaseLayout>

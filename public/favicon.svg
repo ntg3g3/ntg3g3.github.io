@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tao Games">
+  <rect width="64" height="64" rx="12" fill="#111111"/>
+  <path d="M16 18h32v7H36v24h-8V25H16z" fill="#f6f1e8"/>
+  <circle cx="46" cy="46" r="5" fill="#4bb4a7"/>
+</svg>

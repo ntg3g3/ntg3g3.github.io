@@ -1,0 +1,28 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/projects-6", "destination": "/archive/", "permanent": true },
+    { "source": "/about-9", "destination": "/about/", "permanent": true },
+    { "source": "/cavern", "destination": "/projects/cavern/", "permanent": true },
+    { "source": "/projectamazon", "destination": "/projects/project-amazon/", "permanent": true },
+    { "source": "/diceadventure", "destination": "/projects/dice-adventure/", "permanent": true },
+    { "source": "/roblearnx", "destination": "/projects/roblearnx/", "permanent": true },
+    { "source": "/cyberland2021", "destination": "/projects/cyberland-2021/", "permanent": true },
+    { "source": "/soulferry", "destination": "/projects/soul-ferry/", "permanent": true },
+    { "source": "/rememberme", "destination": "/projects/remember-me/", "permanent": true },
+    { "source": "/bellum", "destination": "/projects/bellum/", "permanent": true },
+    { "source": "/droppingsound3d", "destination": "/projects/sound-drop/", "permanent": true },
+    { "source": "/virta", "destination": "/projects/virta/", "permanent": true },
+    { "source": "/wristx", "destination": "/projects/wristx/", "permanent": true },
+    { "source": "/roominate", "destination": "/projects/roominate/", "permanent": true },
+    { "source": "/drydock", "destination": "/projects/in-city-short-distance-ferry-terminal/", "permanent": true },
+    { "source": "/affix", "destination": "/projects/affix/", "permanent": true },
+    { "source": "/botto", "destination": "/projects/botto/", "permanent": true },
+    { "source": "/internprojects", "destination": "/projects/product-design-intern/", "permanent": true },
+    { "source": "/softgood", "destination": "/projects/soft-goods-project/", "permanent": true },
+    { "source": "/photography", "destination": "/projects/photography/", "permanent": true },
+    { "source": "/wood", "destination": "/projects/woodcrafts/", "permanent": true },
+    { "source": "/metal", "destination": "/projects/metalcrafts/", "permanent": true }
+  ]
+}

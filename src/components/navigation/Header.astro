@@ -1,0 +1,22 @@
+---
+import { site } from "@/data/site";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Tao Design home">
+    <span class="brand-mark">T</span>
+    <span>
+      <strong>Tao Design</strong>
+      <small>Design works</small>
+    </span>
+  </a>
+  <nav aria-label="Primary navigation">
+    {site.nav.map((item) => (
+      <a href={item.href} aria-current={currentPath === item.href ? "page" : undefined}>
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</header>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/project/ProjectCard.astro";
+import { projects } from "@/data/projects";
+
+const gameProjects = projects.filter((project) => project.category === "game");
+const experienceProjects = projects.filter((project) => project.category === "experience");
+const featured = projects.filter((project) => project.featured);
+---
+
+<BaseLayout title="Home" path="/">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Game designer / Experience designer</p>
+      <h1>Tao Design</h1>
+      <p>
+        Hello! I'm Tao, a game designer specializing in game design and experience design.
+        After graduating from Carnegie Mellon's Entertainment Technology Center, I worked on
+        Skyweaver and continue building playful interactive experiences.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/archive/">View Archive</a>
+        <a class="button" href="/about/">About Me</a>
+      </div>
+    </div>
+    <div class="hero-showcase" aria-label="Featured project preview">
+      <a class="showcase-main" href="/projects/cavern/">
+        <img src="/images/projects/cavern/cover.webp" alt="" />
+        <span>CAVERN</span>
+      </a>
+      <div class="showcase-stack">
+        {featured.map((project) => (
+          <a href={`/projects/${project.slug}/`}>
+            <img src={`/images/projects/${project.slug}/cover.webp`} alt="" />
+            <span>{project.title}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <p class="eyebrow">Selected work</p>
+      <h2>Game Projects</h2>
+    </div>
+    <div class="project-grid">
+      {gameProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <p class="eyebrow">Interactive systems</p>
+      <h2>Experience Projects</h2>
+    </div>
+    <div class="project-grid">
+      {experienceProjects.map((project) => <ProjectCard project={project} compact />)}
+    </div>
+  </section>
+</BaseLayout>

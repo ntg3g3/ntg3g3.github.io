@@ -1,0 +1,131 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { projects, getProjectBySlug } from "@/data/projects";
+import { projectGalleries } from "@/data/projectGalleries";
+
+export function getStaticPaths() {
+  return projects
+    .filter((project) => !project.externalLinks?.[0])
+    .map((project) => ({ params: { slug: project.slug } }));
+}
+
+const project = getProjectBySlug(Astro.params.slug ?? "");
+
+if (!project) {
+  return Astro.redirect("/404/");
+}
+
+const coverSrc = `/images/projects/${project.slug}/cover.webp`;
+const galleryImages = projectGalleries[project.slug] ?? [];
+
+const backHref = project.category === "archive" ? "/archive/" : "/";
+const projectKind =
+  project.category === "game"
+    ? "Game Project"
+    : project.category === "experience"
+      ? "Experience Project"
+      : "Archive Project";
+const anchorLinks = [
+  ...(project.impacts?.length ? [{ href: "#impact", label: "My Impact" }] : []),
+  ...(project.sections ?? []).map((section) => ({
+    href: `#${section.title.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-")}`,
+    label: section.title
+  })),
+  ...(galleryImages.length ? [{ href: "#gallery", label: "Gallery" }] : [])
+];
+---
+
+<BaseLayout
+  title={project.title}
+  description={project.summary}
+  path={`/projects/${project.slug}/`}
+>
+  <article class="project-detail">
+    <a class="back-link" href={backHref}>Back</a>
+    {anchorLinks.length > 0 && (
+      <nav class="project-jump-nav" aria-label={`${project.title} page sections`}>
+        {anchorLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </nav>
+    )}
+    <div class="detail-hero">
+      <div>
+        <p class="eyebrow">{projectKind}</p>
+        <h1>{project.title}</h1>
+        {project.subtitle && <p class="project-subtitle">{project.subtitle}</p>}
+        <p>{project.summary}</p>
+        <div class="detail-actions">
+          {project.externalLinks?.map((link) => (
+            <a class="button primary" href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      </div>
+      <div class="project-media large">
+        <img src={coverSrc} alt="" />
+        <span>{project.title}</span>
+      </div>
+    </div>
+    <section class="detail-body detail-overview">
+      <div>
+        <h2>Project Overview</h2>
+        {(project.description ?? [project.summary]).map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <dl class="project-facts">
+        {project.deliverables && (
+          <div>
+            <dt>Deliverables</dt>
+            <dd>{project.deliverables}</dd>
+          </div>
+        )}
+        {project.timeSpan && (
+          <div>
+            <dt>Time Span</dt>
+            <dd>{project.timeSpan}</dd>
+          </div>
+        )}
+        {project.team && (
+          <div>
+            <dt>Team</dt>
+            <dd>{project.team.join(", ")}</dd>
+          </div>
+        )}
+        <div>
+          <dt>Role / Tags</dt>
+          <dd>{project.role}</dd>
+        </div>
+        <div>
+          <dt>Original Route</dt>
+          <dd>{project.legacyPath}</dd>
+        </div>
+      </dl>
+    </section>
+    {project.impacts && (
+      <section class="impact-section" id="impact">
+        <p class="eyebrow">My Impact</p>
+        <h2>My Impact</h2>
+        <div class="impact-grid">
+          {project.impacts.map((impact, index) => (
+            <article>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <p>{impact}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+    {project.sections?.map((section) => (
+      <section class="narrative-section" id={section.title.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-")}>
+        <h2>{section.title}</h2>
+        {section.body.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+    ))}
+    {galleryImages.length > 0 && (
+      <section class="detail-gallery" id="gallery" aria-label={`${project.title} image gallery`}>
+        {galleryImages.map((image, index) => (
+          <figure>
+            <img src={image} alt={`${project.title} gallery image ${index + 1}`} loading="lazy" />
+          </figure>
+        ))}
+      </section>
+    )}
+  </article>
+</BaseLayout>
