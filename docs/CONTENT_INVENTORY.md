@@ -45,13 +45,13 @@ Suggested migration routes:
 
 Visible footer/contact text:
 
-- `yutaoh@andrew.cmu.edu`
-- `4126268554`
+- `yutao.huang.tao@gmail.com`
+- `2368688169`
 - `(c) 2022 by Yutao Huang.`
 
 Migration risk:
 
-- Confirm whether the phone number and Andrew email should remain public.
+- Confirmed updated public contact details: Gmail and current phone number.
 - Confirm whether copyright year should stay `2022` for historical fidelity or update to a current range.
 
 ## Home Page Content
@@ -224,7 +224,7 @@ Risk: Detail pages may include embedded video, iframe, PDF/download links, galle
 - Detail pages: crawl and inventory each project-detail route before final migration.
 - Roominate image: route and card text confirmed, but image URL was not fully captured before Wix rate limiting.
 - Media ownership: confirm which Wix-hosted images should be migrated, optimized, replaced, or omitted.
-- Public contact: confirm whether email and phone should stay visible.
+- Public contact: confirmed email and phone should stay visible.
 - Old routes: decide whether project routes should remain as-is or redirect to cleaner paths.
 - Copy editing: visible copy contains minor grammar/spelling issues such as `transformational`, `educational purpose`, `funnily`, `Netherland`, `Carpel-tunnel`; confirm whether to preserve original wording or lightly edit.
 - Social metadata: decide whether one shared social preview image is acceptable or whether each major page/project should have its own preview.
