@@ -2,6 +2,8 @@ node_modules/
 dist/
 .astro/
 .tmp-appdata/
+.tmp-chrome-profile/
+.tmp-qa-screenshots/
 tmp/
 .pnpm-store/
 .dev-server*.log
