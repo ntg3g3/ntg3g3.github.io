@@ -332,12 +332,58 @@ nav a:hover {
   color: var(--gold);
 }
 
-.professional-note {
-  max-width: 620px;
-  margin: 14px 0 0;
+.professional-work-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 0;
+  overflow: hidden;
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(23, 23, 23, 0.06);
+}
+
+.professional-work-card > img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  background: var(--panel);
+}
+
+.professional-work-card > div {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 24px;
+}
+
+.professional-work-card h3 {
+  margin: 0;
+  font-size: clamp(2rem, 4.2vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.professional-work-card p {
+  margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.62;
+}
+
+.professional-work-card small {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.professional-work-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(23, 23, 23, 0.12);
 }
 
 .featured-game-grid {
@@ -786,6 +832,7 @@ nav a:hover {
   .detail-hero,
   .detail-overview,
   .detail-gallery,
+  .professional-work-card,
   .case-study-section,
   .case-study-grid .case-study-media,
   .impact-grid,
@@ -807,6 +854,14 @@ nav a:hover {
   }
 
   .skyweaver-feature div {
+    padding: 18px;
+  }
+
+  .professional-work-card > img {
+    min-height: 220px;
+  }
+
+  .professional-work-card > div {
     padding: 18px;
   }
 
