@@ -131,7 +131,25 @@ export const projects: Project[] = [
         body: [
           "The game needed to make uncertainty, communication, and planning visible through player actions."
         ],
-        callout: "Design prompt: make cooperation observable."
+        callout: "Design prompt: make cooperation observable.",
+        variant: "grid",
+        media: [
+          {
+            src: "/images/projects/dice-adventure/research-board.webp",
+            alt: "Research board grouping real-time co-op games, information exchange games, resource exchange games, discovery games, and board-game references.",
+            caption: "Early research board: sorting co-op game references by collaboration pattern."
+          },
+          {
+            src: "/images/projects/dice-adventure/board-game-research-burgle.webp",
+            alt: "Board game research slide for Burgle Bros with notes about cooperation, roles, and shared planning.",
+            caption: "Board-game research focused on controllable co-op rules."
+          },
+          {
+            src: "/images/projects/dice-adventure/paper-prototype.webp",
+            alt: "Physical paper prototype of Dice Adventure on a table with printed tiles, cards, and markers.",
+            caption: "Paper prototype before the digital build."
+          }
+        ]
       },
       {
         id: "system",
@@ -143,6 +161,21 @@ export const projects: Project[] = [
         ],
         variant: "grid",
         media: [
+          {
+            src: "/images/projects/dice-adventure/final-system-rules.webp",
+            alt: "Final concept rule sheet showing character dice, vision ranges, encounters, and obstacle rules for Dice Adventure.",
+            caption: "Final concept: characters, dice, vision, and encounter rules."
+          },
+          {
+            src: "/images/projects/dice-adventure/character-vision.webp",
+            alt: "Character vision diagram showing dwarf, human, and giant with different visible map ranges.",
+            caption: "Character height changes how far players can see."
+          },
+          {
+            src: "/images/projects/dice-adventure/pinning-system.webp",
+            alt: "Pinning system diagram with danger, on my way, assist me, and unknown signals.",
+            caption: "Non-verbal pins for planning without voice."
+          },
           {
             src: "/images/projects/dice-adventure/gallery-02.webp",
             alt: "Dice Adventure movement state diagram showing move, confirm, cancel, and possible destination states.",
@@ -171,6 +204,11 @@ export const projects: Project[] = [
         variant: "wide",
         media: [
           {
+            src: "/images/projects/dice-adventure/level-progression.webp",
+            alt: "Level progression board with tutorial maps and playtest layouts for Dice Adventure.",
+            caption: "Tutorial progression and playtest maps."
+          },
+          {
             src: "/images/projects/dice-adventure/gallery-01.webp",
             alt: "Dice Adventure level and tutorial layout diagrams with grid maps, character starts, obstacles, and targets.",
             caption: "Tutorial and level planning maps."
@@ -187,6 +225,11 @@ export const projects: Project[] = [
         ],
         variant: "split",
         media: [
+          {
+            src: "/images/projects/dice-adventure/movement-spec.webp",
+            alt: "Movement specification sheet showing moving, confirming, canceling, and possible destination states.",
+            caption: "Interaction spec for movement decisions."
+          },
           {
             src: "/images/projects/dice-adventure/cover.webp",
             alt: "Dice Adventure digital prototype showing the rock dice rule prompt, characters, action icons, hearts, and dungeon grid.",
