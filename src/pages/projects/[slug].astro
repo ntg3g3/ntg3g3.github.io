@@ -25,13 +25,18 @@ const projectKind =
     : project.category === "experience"
       ? "Experience Project"
       : "Archive Project";
+const caseStudySections = project.caseStudySections ?? [];
 const anchorLinks = [
-  ...(project.impacts?.length ? [{ href: "#impact", label: "My Impact" }] : []),
-  ...(project.sections ?? []).map((section) => ({
+  ...(project.impacts?.length ? [{ href: "#impact", label: "Impact" }] : []),
+  ...caseStudySections.map((section) => ({
+    href: `#${section.id}`,
+    label: section.label
+  })),
+  ...(!caseStudySections.length ? (project.sections ?? []).map((section) => ({
     href: `#${section.title.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-")}`,
     label: section.title
-  })),
-  ...(galleryImages.length ? [{ href: "#gallery", label: "Gallery" }] : [])
+  })) : []),
+  ...(galleryImages.length && !caseStudySections.length ? [{ href: "#gallery", label: "Gallery" }] : [])
 ];
 ---
 
@@ -47,7 +52,7 @@ const anchorLinks = [
         {anchorLinks.map((link) => <a href={link.href}>{link.label}</a>)}
       </nav>
     )}
-    <div class="detail-hero">
+    <div class:list={["detail-hero", caseStudySections.length && "case-study-hero"]}>
       <div>
         <p class="eyebrow">{projectKind}</p>
         <h1>{project.title}</h1>
@@ -61,7 +66,7 @@ const anchorLinks = [
       </div>
       <div class="project-media large">
         <img src={coverSrc} alt="" />
-        <span>{project.title}</span>
+        {!caseStudySections.length && <span>{project.title}</span>}
       </div>
     </div>
     <section class="detail-body detail-overview">
@@ -112,13 +117,39 @@ const anchorLinks = [
         </div>
       </section>
     )}
-    {project.sections?.map((section) => (
+    {caseStudySections.map((section) => (
+      <section
+        class:list={[
+          "case-study-section",
+          `case-study-${section.media?.length ? section.variant ?? "split" : "text"}`
+        ]}
+        id={section.id}
+      >
+        <div class="case-study-copy">
+          {section.eyebrow && <p class="eyebrow">{section.eyebrow}</p>}
+          <h2>{section.title}</h2>
+          {section.body.map((paragraph) => <p>{paragraph}</p>)}
+          {section.callout && <p class="case-study-callout">{section.callout}</p>}
+        </div>
+        {section.media && (
+          <div class="case-study-media">
+            {section.media.map((item) => (
+              <figure>
+                <img src={item.src} alt={item.alt} loading="lazy" />
+                <figcaption>{item.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
+      </section>
+    ))}
+    {!caseStudySections.length && project.sections?.map((section) => (
       <section class="narrative-section" id={section.title.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-")}>
         <h2>{section.title}</h2>
         {section.body.map((paragraph) => <p>{paragraph}</p>)}
       </section>
     ))}
-    {galleryImages.length > 0 && (
+    {galleryImages.length > 0 && !caseStudySections.length && (
       <section class="detail-gallery" id="gallery" aria-label={`${project.title} image gallery`}>
         {galleryImages.map((image, index) => (
           <figure>
