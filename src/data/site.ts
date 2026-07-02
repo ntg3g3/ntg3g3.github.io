@@ -1,7 +1,7 @@
 export const site = {
   name: "Tao Design",
   title: "Tao Design Portfolio",
-  url: "https://www.taogames.online",
+  url: "https://ntg3g3.github.io",
   description: "Tao Design - Yutao Huang's online portfolio for game design, experience design, and interactive projects.",
   socialImage: "/images/site/og-default.webp",
   author: "Yutao Huang",

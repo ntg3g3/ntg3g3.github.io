@@ -33,7 +33,7 @@ This is the single source of truth for PersonalWebsite task status across the ma
 | Multi-agent operating layer | in-progress | Main Build Chat | Use this queue plus `DECISIONS` and `HANDOFF_TEMPLATE` for future delegation | Created to reduce single-thread drift. |
 | Original Wix structure re-audit | verified | Main Build Chat | Accepted adjustments implemented for CAVERN and Project Amazon; Dice paper-prototype recommendation rejected per user-confirmed provenance | Preserve narrative order, image grouping, and layout rhythm as much as possible. |
 | Git checkpoint | verified | Main Build Chat | Push verified checkpoint | Commit `d09cf31` created for the sitewide pass. |
-| Public deploy update | in-progress | Main Build Chat / Deployment | Push `main` to trigger GitHub Pages | User has asked to continue toward deployment; GitHub Pages workflow exists. |
+| Public deploy update | in-progress | Main Build Chat / Deployment | Push GitHub-domain URL config and verify `https://ntg3g3.github.io/` | User wants GitHub Pages default domain; no custom-domain migration needed. |
 
 ## Project Queue
 

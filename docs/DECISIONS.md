@@ -130,9 +130,9 @@ This log records durable product, content, workflow, and deployment decisions fo
 
 - Status: active
 - Date: 2026-06-30
-- Decision: A public GitHub repository and GitHub Pages hosting are acceptable for this personal website.
+- Decision: A public GitHub repository and GitHub Pages hosting are acceptable for this personal website. The site can use the default GitHub Pages domain instead of moving `taogames.online`.
 - Reason: The user is comfortable with a public repo and wants low-cost hosting.
-- Implication: Vercel is not required unless a later feature needs it.
+- Implication: Vercel is not required unless a later feature needs it. Do not add a `CNAME` file or change DNS unless the user later requests a custom domain.
 
 ### D-016: Deployment Requires Explicit User Request
 
