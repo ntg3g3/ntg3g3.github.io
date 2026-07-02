@@ -5,7 +5,7 @@ import { projectGalleries } from "@/data/projectGalleries";
 
 export function getStaticPaths() {
   return projects
-    .filter((project) => !project.externalLinks?.[0])
+    .filter((project) => !project.legacyPath.startsWith("http"))
     .map((project) => ({ params: { slug: project.slug } }));
 }
 
@@ -15,7 +15,7 @@ if (!project) {
   return Astro.redirect("/404/");
 }
 
-const coverSrc = `/images/projects/${project.slug}/cover.webp`;
+const coverSrc = project.heroImage ?? `/images/projects/${project.slug}/cover.webp`;
 const galleryImages = projectGalleries[project.slug] ?? [];
 
 const backHref = project.category === "archive" ? "/archive/" : "/";
@@ -27,8 +27,21 @@ const projectKind =
       : "Archive Project";
 const visualSections = project.visualSections ?? [];
 const caseStudySections = project.caseStudySections ?? [];
+const getVideoEmbedUrl = (url: string, type?: string) => {
+  if (type === "vimeo" || url.includes("vimeo.com")) {
+    const id = url.match(/vimeo\.com\/(\d+)/)?.[1];
+    return id ? `https://player.vimeo.com/video/${id}` : url;
+  }
+
+  const id =
+    url.match(/youtu\.be\/([^?&/]+)/)?.[1] ??
+    url.match(/[?&]v=([^?&/]+)/)?.[1] ??
+    url.match(/youtube\.com\/embed\/([^?&/]+)/)?.[1];
+
+  return id ? `https://www.youtube.com/embed/${id}` : url;
+};
 const anchorLinks = [
-  ...(!visualSections.length && project.impacts?.length ? [{ href: "#impact", label: "Impact" }] : []),
+  ...(project.impacts?.length ? [{ href: "#impact", label: "Impact" }] : []),
   ...visualSections.map((section) => ({
     href: `#${section.id}`,
     label: section.label
@@ -37,7 +50,7 @@ const anchorLinks = [
     href: `#${section.id}`,
     label: section.label
   })),
-  ...(!caseStudySections.length ? (project.sections ?? []).map((section) => ({
+  ...(!caseStudySections.length && !visualSections.length ? (project.sections ?? []).map((section) => ({
     href: `#${section.title.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-")}`,
     label: section.title
   })) : []),
@@ -62,7 +75,7 @@ const anchorLinks = [
         <p class="eyebrow">{projectKind}</p>
         <h1>{project.title}</h1>
         {project.subtitle && <p class="project-subtitle">{project.subtitle}</p>}
-        <p>{project.summary}</p>
+        {project.summary && <p>{project.summary}</p>}
         <div class="detail-actions">
           {project.externalLinks?.map((link) => (
             <a class="button primary" href={link.href}>{link.label}</a>
@@ -76,9 +89,26 @@ const anchorLinks = [
     </div>
     {visualSections.length > 0 && (
       <section class="visual-project-meta" aria-label={`${project.title} project details`}>
-        <span>{project.role}</span>
-        {project.subtitle && <span>{project.subtitle}</span>}
-        {project.deliverables && <span>{project.deliverables}</span>}
+        {project.deliverables && (
+          <div>
+            <strong>Deliverables</strong>
+            <span>{project.deliverables}</span>
+          </div>
+        )}
+        {project.timeSpan && (
+          <div>
+            <strong>Time Span</strong>
+            <span>{project.timeSpan}</span>
+          </div>
+        )}
+        {project.team && (
+          <div>
+            <strong>Team</strong>
+            <span>{project.team.join(", ")}</span>
+          </div>
+        )}
+        {!project.deliverables && <span>{project.role}</span>}
+        {!project.timeSpan && project.subtitle && <span>{project.subtitle}</span>}
       </section>
     )}
     {!visualSections.length && (
@@ -117,7 +147,7 @@ const anchorLinks = [
       </dl>
     </section>
     )}
-    {project.impacts && !visualSections.length && (
+    {project.impacts && (
       <section class="impact-section" id="impact">
         <p class="eyebrow">My Impact</p>
         <h2>My Impact</h2>
@@ -132,20 +162,53 @@ const anchorLinks = [
       </section>
     )}
     {visualSections.map((section) => (
-      <section class="visual-story-section" id={section.id}>
+      <section
+        class:list={[
+          "visual-story-section",
+          section.variant && `visual-story-${section.variant}`,
+          section.media.length === 0 && "visual-story-text-only"
+        ]}
+        id={section.id}
+      >
         <div class="visual-story-copy">
           <p class="eyebrow">{section.label}</p>
           <h2>{section.title}</h2>
           {section.body && <p>{section.body}</p>}
+          {section.points && (
+            <div class="visual-story-points">
+              {section.points.map((point) => (
+                <article>
+                  <h3>{point.title}</h3>
+                  <p>{point.body}</p>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
-        <div class="visual-story-media">
-          {section.media.map((item) => (
-            <figure class:list={[item.span && `visual-${item.span}`]}>
-              <img src={item.src} alt={item.alt} loading="lazy" />
-              {item.caption && <figcaption>{item.caption}</figcaption>}
-            </figure>
-          ))}
-        </div>
+        {section.media.length > 0 && (
+          <div class="visual-story-media">
+            {section.media.map((item) => (
+              <figure class:list={[item.span && `visual-${item.span}`]}>
+                {item.type === "youtube" || item.type === "vimeo" ? (
+                  <div class="video-embed">
+                    <iframe
+                      src={getVideoEmbedUrl(item.src, item.type)}
+                      title={item.alt}
+                      loading="lazy"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                ) : (
+                  <a class="image-open-link" href={item.src} target="_blank" rel="noreferrer" aria-label={`Open image: ${item.alt}`}>
+                    <img src={item.src} alt={item.alt} loading="lazy" />
+                  </a>
+                )}
+                {item.caption && <figcaption>{item.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        )}
       </section>
     ))}
     {!visualSections.length && caseStudySections.map((section) => (

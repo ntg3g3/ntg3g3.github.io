@@ -12,18 +12,25 @@ export type Project = {
   deliverables?: string;
   timeSpan?: string;
   team?: string[];
+  heroImage?: string;
   impacts?: string[];
   sections?: { title: string; body: string[] }[];
   visualSections?: {
     id: string;
     label: string;
+    variant?: "split" | "wide" | "gallery" | "pair" | "text";
     title: string;
     body?: string;
+    points?: {
+      title: string;
+      body: string;
+    }[];
     media: {
+      type?: "image" | "youtube" | "vimeo";
       src: string;
       alt: string;
       caption?: string;
-      span?: "wide" | "tall";
+      span?: "wide" | "tall" | "compact";
     }[];
   }[];
   caseStudySections?: {
@@ -69,7 +76,7 @@ export const projects: Project[] = [
     role: "LBE / Game Design / Level Design",
     subtitle: "Semester Project | Spring 2023",
     summary:
-      "An experience designed for a 270-degree CAVE projection system featuring ODS to showcase the system's potential.",
+      "A 3-5 player underwater co-op experience designed for a 270-degree CAVE projection system.",
     description: [
       "Project CAVERN is a semester-long ETC project for Steve Audia's C.A.V.E.R.N. system, an immersive projection environment with a 270-degree circular screen and a 20-foot-wide play area.",
       "Our deliverable was a cooperative multiplayer experience that uses the projection system and omnidirectional stereoscopy to create a short, high-impact showcase for local multiplayer interaction, environment design, audio, and user tracking."
@@ -87,7 +94,7 @@ export const projects: Project[] = [
       {
         title: "Dev Logs and Trailer",
         body: [
-          "The original project page linked weekly development logs and a first-level trailer. This static rebuild keeps the project structure ready for those links and media once final public URLs are confirmed."
+          "Public dev logs and Level 1 video are restored in the rebuilt page."
         ]
       },
       {
@@ -99,15 +106,17 @@ export const projects: Project[] = [
     ],
     visualSections: [
       {
-        id: "space",
-        label: "Space",
-        title: "CAVE projection experience",
-        body: "A short co-op experience built around the 270-degree projection room and on-site play.",
+        id: "video",
+        label: "Video",
+        variant: "wide",
+        title: "Level 1 prototype footage",
+        body: "The room was the design material: group presence, a curved projection surface, tracked input, and readable pacing shaped the experience in motion.",
         media: [
           {
-            src: "/images/projects/cavern/cave-playtest.webp",
-            alt: "Players standing inside the CAVERN projection environment.",
-            caption: "CAVERN playtest space.",
+            type: "youtube",
+            src: "https://youtu.be/TGdCYzSnRDs",
+            alt: "CAVERN Level 1 video.",
+            caption: "Level 1 video: cavern Lv1.",
             span: "wide"
           }
         ]
@@ -115,36 +124,37 @@ export const projects: Project[] = [
       {
         id: "design",
         label: "Design",
-        title: "One-page design handoff",
-        body: "The old Wix page included a one-page design document and handoff material for the location-based experience.",
+        variant: "wide",
+        title: "Platform constraints became gameplay",
+        body: "The one-page design handoff keeps the important constraints visible: player count, input limits, aiming risk, guided movement, stage goals, and fallback plans.",
         media: [
           {
             src: "/images/projects/cavern/design-document.webp",
             alt: "CAVERN design document board with gameplay and system notes.",
-            caption: "Design document.",
+            caption: "System and gameplay design document.",
             span: "wide"
-          },
-          {
-            src: "/images/projects/cavern/cover.webp",
-            alt: "CAVERN project cover image.",
-            caption: "Project cover."
           }
         ]
       },
       {
-        id: "trailer",
-        label: "Trailer",
-        title: "Trailer and dev-log slot",
-        body: "The original page referenced weekly dev logs and a first-level trailer. No confirmed public URL was recovered from the Wix scan, so this section is kept as the place to reconnect those links if they are available.",
-        media: [
-          {
-            src: "/images/projects/cavern/cave-playtest.webp",
-            alt: "Players standing inside the CAVERN projection environment.",
-            caption: "Public trailer/dev-log link not yet confirmed.",
-            span: "wide"
-          }
-        ]
+        id: "stages",
+        label: "Stages",
+        variant: "text",
+        title: "Discovery, protection, and finale",
+        body: "The level structure moved from underwater discovery to ship protection, then into a darker finale with flashlight pressure.",
+        media: []
+      },
+      {
+        id: "devlog",
+        label: "Dev Log",
+        variant: "text",
+        title: "Weekly development record",
+        body: "The public ETC dev log documents the team's weekly process, from early concepts and storyboards to prototype and final presentation work.",
+        media: []
       }
+    ],
+    externalLinks: [
+      { label: "Dev Log", href: "https://projects.etc.cmu.edu/cavern/blog/" }
     ],
     mediaHint: "IMG_8237.jpg",
     featured: true
@@ -154,39 +164,56 @@ export const projects: Project[] = [
     slug: "project-amazon",
     category: "game",
     legacyPath: "/projectamazon",
-    role: "Semester Project / Game Design / Experience Design",
+    role: "Experience Design / System Design / Game Design",
     summary:
-      "A transformational education experience combining projection and VR.",
+      "A playable VR/projection learning prototype built around Amazon-region themes and route-based exploration.",
+    heroImage: "/images/projects/project-amazon/title-screen.webp",
     visualSections: [
       {
         id: "framing",
         label: "Framing",
-        title: "Transformational travel learning",
-        body: "Project Amazon combined projection, VR, and cultural storytelling into an education experience.",
+        variant: "wide",
+        title: "A mixed-reality learning journey",
+        body: "Project Amazon turns cultural, environmental, and travel-safety themes into an embodied route through projection and VR.",
         media: [
-          {
-            src: "/images/projects/project-amazon/title-screen.webp",
-            alt: "Project Amazon title screen from the original Wix page.",
-            caption: "Original title screen.",
-            span: "wide"
-          },
-          {
-            src: "/images/projects/project-amazon/theme-summary.webp",
-            alt: "Project Amazon theme summary board with travel and study abroad references.",
-            caption: "Theme summary."
-          },
           {
             src: "/images/projects/project-amazon/river-context.webp",
             alt: "River landscape context image for Project Amazon.",
-            caption: "River context."
+            caption: "River context for the journey.",
+            span: "wide"
+          }
+        ]
+      },
+      {
+        id: "themes",
+        label: "Themes",
+        variant: "gallery",
+        title: "Learning themes",
+        body: "The original concept framed the journey through river culture, study-abroad safety, folk tale, and architecture.",
+        media: [
+          {
+            src: "/images/projects/project-amazon/theme-summary.webp",
+            alt: "Project Amazon summary slide listing river, study abroad safety, folk tale, and architecture as project themes.",
+            caption: "Theme summary: river, study abroad safety, folk tale, and architecture."
+          },
+          {
+            src: "/images/projects/project-amazon/gallery-03.webp",
+            alt: "Architecture reference image from the Project Amazon research deck.",
+            caption: "Architecture reference from the learning-theme research."
+          },
+          {
+            src: "/images/projects/project-amazon/gallery-04.webp",
+            alt: "River slide describing rivers as places where cultures and civilizations develop.",
+            caption: "River research slide connecting geography, civilization, and culture."
           }
         ]
       },
       {
         id: "experience",
         label: "Experience",
+        variant: "wide",
         title: "Projection and VR setup",
-        body: "The old page used boards and diagrams to explain the spatial setup and player-facing experience.",
+        body: "Projection gives shared context while VR gives an embodied viewpoint inside the learning route.",
         media: [
           {
             src: "/images/projects/project-amazon/projection-concept.webp",
@@ -196,30 +223,78 @@ export const projects: Project[] = [
           {
             src: "/images/projects/project-amazon/layout-board.webp",
             alt: "Project Amazon layout board with interface, projection, and screen references.",
-            caption: "Layout board.",
+            caption: "System board: visual UI, pop-up windows, video transmission, map, and VR player location.",
             span: "wide"
-          },
-          {
-            src: "/images/projects/project-amazon/screen-flow.webp",
-            alt: "Project Amazon screen flow and interface storyboard.",
-            caption: "Screen flow."
           }
         ]
       },
       {
         id: "route",
         label: "Route",
-        title: "Map and path",
+        variant: "pair",
+        title: "Route and progression",
+        body: "The learning content is organized as a path rather than a static slideshow.",
         media: [
           {
             src: "/images/projects/project-amazon/route-map.webp",
             alt: "Route map from Project Amazon.",
-            caption: "Route map."
+            caption: "Mapped route through the experience."
           },
           {
             src: "/images/projects/project-amazon/tree-route-sketch.webp",
             alt: "Tree route sketch and map diagram for Project Amazon.",
-            caption: "Path sketch."
+            caption: "Early route sketch."
+          },
+          {
+            src: "/images/projects/project-amazon/screen-flow.webp",
+            alt: "Project Amazon screen flow and interface storyboard.",
+            caption: "Screen and interaction flow.",
+            span: "wide"
+          }
+        ]
+      },
+      {
+        id: "result",
+        label: "Result",
+        variant: "wide",
+        title: "A playable river journey",
+        body: "The prototype used boat movement and base-return feedback to make the route feel like an embodied trip rather than a static learning board.",
+        media: [
+          {
+            src: "/images/projects/project-amazon/return-to-base.png",
+            alt: "Project Amazon gameplay screen showing a boat returning to base on a river.",
+            caption: "Playable prototype: returning to base after traveling through the river route.",
+            span: "wide"
+          }
+        ]
+      },
+      {
+        id: "videos",
+        label: "Videos",
+        variant: "wide",
+        title: "Trailer and playthrough",
+        body: "The videos come after the system boards so the demo is easier to read as a playable VR/projection prototype.",
+        media: [
+          {
+            type: "youtube",
+            src: "https://youtu.be/3DMoqmmHwn4?si=Q7fIxKuM16rhXk2o",
+            alt: "Project Amazon trailer video.",
+            caption: "Trailer.",
+            span: "wide"
+          },
+          {
+            type: "youtube",
+            src: "https://youtu.be/dXYntPw7LGI?si=WFt8_gQqMJ1WR2Wi",
+            alt: "Project Amazon boat movement video.",
+            caption: "Boat movement.",
+            span: "wide"
+          },
+          {
+            type: "vimeo",
+            src: "https://vimeo.com/699960398?fl=pl&fe=cm",
+            alt: "Project Amazon full playthrough video on Vimeo.",
+            caption: "Full playthrough.",
+            span: "wide"
           }
         ]
       }
@@ -235,81 +310,157 @@ export const projects: Project[] = [
     role: "Game Design / Level Design / Asymmetric Co-op",
     subtitle: "HCII Research | Summer 2022",
     summary:
-      "A turn-based asymmetric co-op game for Human-Machine Teaming research.",
+      "A turn-based asymmetric co-op game where players coordinate through partial information, pins, and character-specific dice.",
     description: [
       "Designed for CMU HCII / ARL STRONG lab research on Human-Machine Teaming.",
       "Players coordinate through partial information, pings, character-specific dice, and tutorial levels."
     ],
-    deliverables: "Playable asymmetric co-op research prototype.",
+    deliverables: "A multiplayer asymmetric co-op game designed for human-machine teaming studies",
     timeSpan: "6/21/2022 - present",
-    team: ["Yutao Huang", "Pheobe Wang", "Jingyuan Fang"],
+    team: ["Yutao Huang", "Phoebe Wang", "Jingyuan Fang"],
+    impacts: [
+      "Researched existing co-op games and board games, then proposed several game concepts to the team.",
+      "Communicated with the collaborating research team to understand their research needs and transform them into in-game features.",
+      "Worked closely with the artist and programmer in the team, while helping manage project progress.",
+      "Finished the level designs and tutorial stages.",
+      "Arranged playtests, collected feedback, and listed existing bugs."
+    ],
     visualSections: [
+      {
+        id: "overview",
+        label: "Overview",
+        variant: "wide",
+        title: "Research needs became a co-op game system",
+        body: "Summer 2022 I was hired as a game designer by the ARL STRONG lab at CMU to design and develop an asymmetric co-op game for Human-Machine Teaming studies. Dice Adventure is the final outcome we developed: a turn-based game involving three characters, a dwarf, a human and a giant. They each have their own range of vision and their own set of dice. Players communicate through a pinning system, share partial information, and use their dice wisely to unlock altars and reach the final gate.",
+        media: []
+      },
+      {
+        id: "constraints",
+        label: "Constraints",
+        variant: "wide",
+        title: "Research constraints",
+        body: "During the research phase, we met the collaborating research team and collected their needs and thoughts.",
+        points: [
+          {
+            title: "In-game Communication",
+            body: "Since audio communication can be hard for AI players, the game needed a built-in communication system that does not require audio input."
+          },
+          {
+            title: "In-game Learning",
+            body: "The system needed different learning patterns that allow AI players to learn in real time, with breaks where players can communicate and reflect."
+          },
+          {
+            title: "Strategy and Decision Making",
+            body: "The game should be heavily based on strategy and decision making instead of something like reflex and aim."
+          },
+          {
+            title: "Asymmetry in Information",
+            body: "The asymmetry should come from how players gather information, pushing the team to communicate more with each other."
+          }
+        ],
+        media: []
+      },
       {
         id: "research",
         label: "Research",
-        title: "Research and references",
-        body: "Turn-based and board-game references helped turn cooperation, uncertainty, and role asymmetry into readable mechanics.",
+        variant: "gallery",
+        title: "Turn-based references",
+        body: "With the feedback and ideas of the team, we found turn-based games fit the requirement the most. Board-game systems were useful references because their mechanisms are normally more manageable for AI research.",
         media: [
           {
             src: "/images/projects/dice-adventure/research-board.webp",
             alt: "Research board grouping real-time co-op games, information exchange games, resource exchange games, discovery games, and board-game references.",
-            caption: "Reference map by collaboration pattern.",
+            caption: "Reference map by collaboration pattern. These images are references, not project output.",
             span: "wide"
-          },
-          {
-            src: "/images/projects/dice-adventure/board-game-research-burgle.webp",
-            alt: "Board game research slide for Burgle Bros with notes about cooperation, roles, and shared planning.",
-            caption: "Board-game research notes."
-          },
-          {
-            src: "/images/projects/dice-adventure/paper-prototype.webp",
-            alt: "Physical paper prototype of Dice Adventure on a table with printed tiles, cards, and markers.",
-            caption: "Paper prototype before the digital build."
           }
         ]
       },
       {
-        id: "system",
-        label: "System",
-        title: "Rules and communication",
-        body: "Character-specific dice, different vision ranges, and pins created a small language for planning without full information.",
+        id: "board-game-references",
+        label: "Process",
+        variant: "gallery",
+        title: "Early maps and prototype boards",
+        body: "After the reference study, the design moved into grid sketches, paper-like maps, and prototype boards for testing movement, roles, and map logic.",
+        media: [
+          {
+            src: "/images/projects/dice-adventure/early-grid-sketches.png",
+            alt: "Early Dice Adventure grid sketches with character markers and route lines.",
+            caption: "Early grid sketches for route and goal placement."
+          },
+          {
+            src: "/images/projects/dice-adventure/low-poly-board-prototype.png",
+            alt: "Low-poly Dice Adventure board prototype with characters, rocks, trees, altars, and gate.",
+            caption: "Board-like prototype space for testing layout and interaction."
+          },
+          {
+            src: "/images/projects/dice-adventure/level-iteration-board.png",
+            alt: "Dice Adventure level iteration board with many grid-map variations.",
+            caption: "Level iteration board."
+          },
+          {
+            src: "/images/projects/dice-adventure/ui-state-board.png",
+            alt: "Dice Adventure UI state board with multiple interface and gameplay-state thumbnails.",
+            caption: "UI and state exploration.",
+            span: "wide"
+          }
+        ]
+      },
+      {
+        id: "concept",
+        label: "Final Concept",
+        variant: "wide",
+        title: "Characters, dice, encounters, goals",
+        body: "The final concept combined three asymmetric characters, character-specific dice, obstacle rules, matching altars, and a final gate.",
         media: [
           {
             src: "/images/projects/dice-adventure/final-system-rules.webp",
             alt: "Final concept rule sheet showing character dice, vision ranges, encounters, and obstacle rules for Dice Adventure.",
-            caption: "Final concept sheet.",
+            caption: "Condensed system reference sheet used for movement, characters, altars, final gate, and obstacles.",
             span: "wide"
           },
           {
-            src: "/images/projects/dice-adventure/character-vision.webp",
-            alt: "Character vision diagram showing dwarf, human, and giant with different visible map ranges.",
-            caption: "Character height changes how far players can see."
+            src: "/images/projects/dice-adventure/dice-matrix.png",
+            alt: "Dice Adventure dice matrix showing character-specific dice distributions.",
+            caption: "Character-specific dice sets.",
+            span: "compact"
           },
           {
-            src: "/images/projects/dice-adventure/pinning-system.webp",
-            alt: "Pinning system diagram with danger, on my way, assist me, and unknown signals.",
-            caption: "Non-verbal pins for planning without voice."
+            src: "/images/projects/dice-adventure/obstacle-rules-table.png",
+            alt: "Dice Adventure obstacle rules table for rocks, monsters, and traps.",
+            caption: "Obstacle rule table: rock, monster, and trap conditions.",
+            span: "compact"
           },
           {
-            src: "/images/projects/dice-adventure/gallery-02.webp",
-            alt: "Dice Adventure movement state diagram showing move, confirm, cancel, and possible destination states.",
-            caption: "Movement preview and confirmation states."
+            src: "/images/projects/dice-adventure/goal-map-pair.png",
+            alt: "Dice Adventure goal map pair showing altar and final gate route logic.",
+            caption: "Goal and altar route logic.",
+            span: "compact"
+          }
+        ]
+      },
+      {
+        id: "pinning",
+        label: "Pinning",
+        variant: "pair",
+        title: "Pinning as the core interaction",
+        body: "The pinning system gave players a compact way to express danger, intent, uncertainty, and requests without sharing full information.",
+        media: [
+          {
+            src: "/images/projects/dice-adventure/pinning-system-red.png",
+            alt: "Dice Adventure pinning system diagram with the danger pin highlighted in red.",
+            caption: "Pinning state with danger highlighted."
           },
           {
-            src: "/images/projects/dice-adventure/gallery-03.webp",
-            alt: "Dice Adventure combat prompt asking the player to roll matching numbers to kill monsters.",
-            caption: "Combat asks for matching dice values."
-          },
-          {
-            src: "/images/projects/dice-adventure/gallery-04.webp",
-            alt: "Dice Adventure trap prompt asking the player to roll smaller than 3 to break the trap.",
-            caption: "Trap interaction changes the dice condition."
+            src: "/images/projects/dice-adventure/pinning-system-gray.png",
+            alt: "Dice Adventure pinning system diagram showing danger, on my way, assist me, and unknown.",
+            caption: "Pinning menu: danger, on my way, assist me, and unknown."
           }
         ]
       },
       {
         id: "levels",
         label: "Levels",
+        variant: "wide",
         title: "Level progression",
         body: "Tutorial maps staged movement, obstacles, altars, gates, and teamwork in a controlled progression.",
         media: [
@@ -323,31 +474,61 @@ export const projects: Project[] = [
             src: "/images/projects/dice-adventure/gallery-01.webp",
             alt: "Dice Adventure level and tutorial layout diagrams with grid maps, character starts, obstacles, and targets.",
             caption: "Tutorial and level planning maps."
+          },
+          {
+            src: "/images/projects/dice-adventure/stage-thumbnail-strip.png",
+            alt: "Dice Adventure stage thumbnail strip showing multiple level states.",
+            caption: "Stage thumbnail strip from level iteration."
+          }
+        ]
+      },
+      {
+        id: "movement",
+        label: "Plan and Move",
+        variant: "wide",
+        title: "Plan and move",
+        body: "The movement system was designed to support a clearer learning process: preview a route, confirm it, cancel it, and understand reachable destinations before committing.",
+        media: [
+          {
+            src: "/images/projects/dice-adventure/movement-spec.webp",
+            alt: "Dice Adventure movement specification sheet showing moving, confirming, canceling, and possible destination states.",
+            caption: "Movement specification from the original Wix assets.",
+            span: "wide"
+          }
+        ]
+      },
+      {
+        id: "assets-and-states",
+        label: "States",
+        variant: "gallery",
+        title: "Prototype states and assets",
+        body: "The prototype also needed readable active-player feedback, obstacle assets, and compact visual tokens so the research game could be understood quickly during playtests.",
+        media: [
+          {
+            src: "/images/projects/dice-adventure/active-player-screen.png",
+            alt: "Dice Adventure active player screen showing the current character and game UI.",
+            caption: "Active-player feedback."
+          },
+          {
+            src: "/images/projects/dice-adventure/obstacle-asset-sheet.png",
+            alt: "Dice Adventure obstacle asset sheet with monster, rock, and trap objects.",
+            caption: "Obstacle assets: monster, rock, and trap."
+          },
+          {
+            src: "/images/projects/dice-adventure/pixel-icons-sheet.png",
+            alt: "Dice Adventure pixel icon sheet for objects, obstacles, and map tokens.",
+            caption: "Small map/object icon explorations.",
+            span: "wide"
           }
         ]
       },
       {
         id: "prototype",
         label: "Prototype",
+        variant: "pair",
         title: "Digital prototype",
-        body: "The build kept the board-game clarity: turn state, team status, reachable spaces, and dice prompts.",
+        body: "The digital prototype translated the designed rules into clear turn state, team status, reachable spaces, and dice prompts.",
         media: [
-          {
-            src: "/images/projects/dice-adventure/movement-spec.webp",
-            alt: "Movement specification sheet showing moving, confirming, canceling, and possible destination states.",
-            caption: "Interaction spec for movement decisions."
-          },
-          {
-            src: "/images/projects/dice-adventure/cover.webp",
-            alt: "Dice Adventure digital prototype showing the rock dice rule prompt, characters, action icons, hearts, and dungeon grid.",
-            caption: "Prototype UI with dice prompt.",
-            span: "wide"
-          },
-          {
-            src: "/images/projects/dice-adventure/gallery-02.webp",
-            alt: "Dice Adventure movement state diagram showing move, confirm, cancel, and possible destination states.",
-            caption: "Movement preview states."
-          },
           {
             src: "/images/projects/dice-adventure/gallery-03.webp",
             alt: "Dice Adventure combat prompt asking the player to roll matching numbers to kill monsters.",
@@ -1215,6 +1396,7 @@ export const projects: Project[] = [
       {
         id: "site",
         label: "Site",
+        variant: "gallery",
         title: "Dry dock as public site",
         body: "The old page reads like a portfolio board: site analysis, ferry access, ecological systems, and a sculptural terminal form.",
         media: [
@@ -1239,6 +1421,7 @@ export const projects: Project[] = [
       {
         id: "form",
         label: "Form",
+        variant: "gallery",
         title: "Model and form studies",
         media: [
           {
@@ -1267,6 +1450,7 @@ export const projects: Project[] = [
       {
         id: "system",
         label: "System",
+        variant: "gallery",
         title: "Structure and material",
         media: [
           {
@@ -1307,6 +1491,7 @@ export const projects: Project[] = [
       {
         id: "system",
         label: "System",
+        variant: "gallery",
         title: "Easy-to-assemble furniture",
         body: "AFFIX presents a furniture connection system through assembly diagrams, connectors, and final renders.",
         media: [
@@ -1331,6 +1516,7 @@ export const projects: Project[] = [
       {
         id: "details",
         label: "Details",
+        variant: "gallery",
         title: "Connector details",
         media: [
           {
@@ -1376,6 +1562,7 @@ export const projects: Project[] = [
       {
         id: "research",
         label: "Research",
+        variant: "gallery",
         title: "Outdoor workout context",
         body: "The old page started from outdoor exercise research, site observations, and use patterns around public fitness space.",
         media: [
@@ -1405,6 +1592,7 @@ export const projects: Project[] = [
       {
         id: "ideation",
         label: "Ideation",
+        variant: "gallery",
         title: "From site problem to product form",
         body: "Sketches and site mapping connected the public setting to a portable workout product direction.",
         media: [
@@ -1429,6 +1617,7 @@ export const projects: Project[] = [
       {
         id: "form",
         label: "Form",
+        variant: "gallery",
         title: "Product and parts",
         body: "The product is explained through renders, parts, and placement in a bench-side workout scenario.",
         media: [
@@ -1458,6 +1647,7 @@ export const projects: Project[] = [
       {
         id: "final-video",
         label: "Final Video",
+        variant: "gallery",
         title: "Prototype motion and identity",
         body: "The recovered GIF keeps the original motion slot, paired with the final logo and presentation renders.",
         media: [
@@ -1494,8 +1684,8 @@ export const projects: Project[] = [
       {
         id: "renderings",
         label: "Renderings",
+        variant: "gallery",
         title: "Selected internship renderings",
-        body: "A compact archive of product rendering and form exploration from the internship period.",
         media: [
           {
             src: "/images/projects/product-design-intern/appliance-render-01.webp",
@@ -1523,6 +1713,7 @@ export const projects: Project[] = [
       {
         id: "charger",
         label: "Charger",
+        variant: "gallery",
         title: "Compact charger series",
         media: [
           {
@@ -1561,6 +1752,7 @@ export const projects: Project[] = [
       {
         id: "dimensions",
         label: "Details",
+        variant: "gallery",
         title: "Dimension views",
         media: [
           {
@@ -1590,8 +1782,8 @@ export const projects: Project[] = [
       {
         id: "concept",
         label: "Concept",
+        variant: "gallery",
         title: "Vest to tote",
-        body: "A soft-goods project exploring how a wearable vest can transform into a tote bag.",
         media: [
           {
             src: "/images/projects/soft-goods-project/technical-cover.webp",
@@ -1619,6 +1811,7 @@ export const projects: Project[] = [
       {
         id: "pattern",
         label: "Pattern",
+        variant: "gallery",
         title: "Pattern and construction",
         media: [
           {
@@ -1642,6 +1835,7 @@ export const projects: Project[] = [
       {
         id: "prototype",
         label: "Prototype",
+        variant: "gallery",
         title: "Final prototype",
         media: [
           {
@@ -1680,12 +1874,12 @@ export const projects: Project[] = [
     category: "archive",
     legacyPath: "/photography",
     role: "Photography",
-    summary:
-      "A collection of photos from the original portfolio archive.",
+    summary: "",
     visualSections: [
       {
         id: "photos",
         label: "Photos",
+        variant: "gallery",
         title: "Selected photography",
         media: [
           {
@@ -1739,8 +1933,8 @@ export const projects: Project[] = [
       {
         id: "folded",
         label: "Object",
+        variant: "gallery",
         title: "Folded form study",
-        body: "The old page presented craft pieces as object studies: form, material, detail, and use.",
         media: [
           {
             src: "/images/projects/woodcrafts/folded-form-01.webp",
@@ -1768,6 +1962,7 @@ export const projects: Project[] = [
       {
         id: "toy",
         label: "Toy",
+        variant: "gallery",
         title: "Wood toy mechanism",
         media: [
           {
@@ -1795,6 +1990,7 @@ export const projects: Project[] = [
       {
         id: "board",
         label: "Board",
+        variant: "gallery",
         title: "Game board object",
         media: [
           {
@@ -1834,8 +2030,8 @@ export const projects: Project[] = [
       {
         id: "forms",
         label: "Forms",
+        variant: "gallery",
         title: "Folded metal studies",
-        body: "A small archive of folded metal forms, profiles, and detail shots from the original page.",
         media: [
           {
             src: "/images/projects/metalcrafts/metal-form-01.webp",

@@ -1,48 +1,134 @@
 # Agents And Chats
 
-## Skill
+## Current Operating Model
 
-Created project-local skill:
+The current main chat is the active control room.
 
-`E:\PersonalWebsite\.codex\skills\personal-website-migration`
+Other chats/agents are useful, but they should not become silent parallel decision-makers. Their job is to produce bounded artifacts that the main chat reviews with Yutao before implementation.
 
-Use it for Wix-to-static migration, content inventory, Astro structure, visual QA, and deployment handoff.
+Use these coordination files before starting or closing background work:
+- `docs/WORK_QUEUE.md` for status, owner, next action, and blocker tracking.
+- `docs/DECISIONS.md` for durable user-confirmed product and workflow decisions.
+- `docs/HANDOFF_TEMPLATE.md` for background worker completion reports.
 
-## Agent Roles
+## Active / Background Boundary
 
-Primary coordinator:
-- Owns the project direction.
-- Writes and integrates final files.
-- Keeps decisions consistent.
+### Main Build Chat
 
-Architecture reviewer:
-- Reviews whether the stack and structure are appropriate.
-- Flags over-engineering or missing pieces.
+Status: active.
 
-Content inventory agent:
-- Extracts current Wix pages, project content, images, and links.
-- Produces `docs/CONTENT_INVENTORY.md`.
+Owns:
+- Product direction and user alignment.
+- Final decisions after Yutao review.
+- Implementation in Astro/data/CSS.
+- Build checks, local preview checks, Git commits, and deployment.
+- Final wording when there are conflicting interpretations.
 
-Visual QA agent:
-- Checks desktop and mobile screenshots.
-- Flags spacing, overflow, image, and navigation issues.
+Should not:
+- Let worker artifacts directly become implementation without review.
+- Batch-rearrange project pages before the relevant brief and layout plan are approved.
 
-Deployment agent:
-- Prepares deployment provider notes and DNS checklist.
+### Content Understanding Chat / Workers
 
-## Chat Plan
+Status: background, artifact-producing.
 
-Main chat:
-- Continue here for the actual build.
+Owns:
+- Reading old Wix pages, contact sheets, project images, diagrams, videos, and dev logs.
+- Writing `docs/project-briefs/<slug>.md`.
+- Separating confirmed facts from inferred meaning.
+- Explaining `Original Wix Page Logic`.
+- Identifying unclear team roles, missing links, and public-safety questions.
 
-Optional background chat: Content Inventory
-- Use if live-site extraction becomes time-consuming.
-- Output should be merged into `docs/CONTENT_INVENTORY.md`.
+Does not own:
+- Page implementation.
+- Final copy decisions.
+- Visual styling.
+- Deployment.
 
-Optional background chat: Deployment
-- Use after the site builds locally.
-- Output should be merged into `docs/DEPLOYMENT.md`.
+Output:
+- `docs/project-briefs/<slug>.md`
 
-## Working Rule
+Completion rule:
+- A content task is complete only when the brief explains what the major images mean and how the old page was arranged.
 
-Keep implementation centralized unless a task is clearly independent. Read-only agents are safe to run in parallel; editing agents need disjoint file ownership.
+### Layout Direction Chat / Workers
+
+Status: background, artifact-producing.
+
+Owns:
+- Turning approved briefs into layout plans.
+- Deciding visual hierarchy, section order, image size, and text/image rhythm.
+- Calling out implementation requirements such as YouTube embeds or gallery variants.
+
+Does not own:
+- Editing `src/` implementation files unless explicitly assigned.
+- Deploying.
+- Changing project facts.
+
+Output:
+- `docs/layout-plans/<slug>.md`
+
+Completion rule:
+- A layout plan is complete only when it can be reviewed by Yutao before page implementation.
+
+### Visual QA Chat / Worker
+
+Status: optional background.
+
+Owns:
+- Reviewing local screenshots after implementation.
+- Checking whether the page still feels image-led and close to the original Wix logic.
+- Flagging text overload, image cropping, mobile overflow, and misleading media placement.
+
+Output:
+- QA notes in `docs/` or concise findings in the main chat.
+
+Does not own:
+- Product decisions.
+- Silent code changes unless specifically assigned a narrow fix.
+
+### Deployment / DNS Chat
+
+Status: optional background.
+
+Owns:
+- GitHub Pages status checks.
+- Deployment notes.
+- DNS/custom domain checklist.
+
+Does not own:
+- Portfolio content/layout decisions.
+
+Output:
+- `docs/DEPLOYMENT.md` updates or main-chat deployment summary.
+
+## Skill Map
+
+Use these project-local skills:
+
+- `portfolio-content-interpreter`: content briefs and image interpretation.
+- `case-study-layout-designer`: layout plans and visual hierarchy.
+- `portfolio-project-manager`: prioritization, acceptance criteria, chat boundaries.
+- `personal-website-migration`: Wix migration, static-site constraints, deployment handoff.
+
+## Current Artifact Status
+
+The canonical task and artifact status now lives in `docs/WORK_QUEUE.md`.
+
+Do not infer current status only from this file or from chat history. Check the queue before assigning or resuming work.
+
+## Decision Rules
+
+1. Brief before layout.
+2. Layout plan before implementation.
+3. Main chat review before code changes.
+4. User approval before major page relayout.
+5. If a project has unclear team ownership, use conservative role wording.
+6. If images are references, label them as references.
+7. If media is external, keep a fallback link.
+8. Durable user-confirmed direction must be recorded in `docs/DECISIONS.md`.
+9. Background work must end with a handoff using `docs/HANDOFF_TEMPLATE.md`.
+
+## Current Priority
+
+Read `docs/WORK_QUEUE.md` for the live priority order.

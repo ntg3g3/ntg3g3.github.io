@@ -7,6 +7,7 @@ dist/
 tmp/
 .pnpm-store/
 .dev-server*.log
+.static-preview*.log
 
 # Large local Wix source assets. Optimized web assets live in public/images.
 assets/wix-originals/

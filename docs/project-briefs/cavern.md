@@ -2,9 +2,9 @@
 
 ## Source Confidence
 
-High for the project premise, platform, role, team, time span, and broad deliverable because they are present in `src/data/projects.ts` and `docs/CONTENT_INVENTORY.md`. Medium for the detailed gameplay interpretation because the CAVERN contact sheet includes one readable system diagram and one strong in-room play photo, but fewer total artifacts than Dice Adventure. Low for final public links, exact trailer/dev-log URLs, and final outcomes because those are referenced but not present in the available local materials.
+High for the project premise, platform, role, team, time span, and broad deliverable because they are present in `src/data/projects.ts` and `docs/CONTENT_INVENTORY.md`. Medium-high for process interpretation after the user provided the public dev log and YouTube level video. Medium for the detailed gameplay interpretation because the CAVERN contact sheet includes one readable system diagram and one strong in-room play photo, while the dev log provides additional process images and weekly development evidence.
 
-Confirmed sources used: `docs/CONTENT_INVENTORY.md`, `assets/wix-originals/wix-assets-manifest.csv`, `docs/asset-contact-sheets/cavern.jpg`, `src/data/projects.ts`, and `public/images/projects/cavern`.
+Confirmed sources used: `docs/CONTENT_INVENTORY.md`, `assets/wix-originals/wix-assets-manifest.csv`, `docs/asset-contact-sheets/cavern.jpg`, `src/data/projects.ts`, `public/images/projects/cavern`, public dev log `https://projects.etc.cmu.edu/cavern/blog/`, and YouTube video `https://youtu.be/TGdCYzSnRDs`.
 
 ## Project One-Liner
 
@@ -17,6 +17,12 @@ Confirmed: Project CAVERN was a semester-long ETC project for Steve Audia's C.A.
 Confirmed: The deliverable was a cooperative multiplayer experience in the CAVERN projection system, with documentation for hand-off. The role listed for Yutao is LBE, Game Design, and Level Design.
 
 Inferred: The experience needed to function both as a game and as a platform showcase. It had to make the 270-degree space, group presence, wide field of view, audio, and tracking feel valuable rather than incidental.
+
+Confirmed public media:
+
+- Dev log hub: `https://projects.etc.cmu.edu/cavern/blog/`
+- YouTube level video: `https://youtu.be/TGdCYzSnRDs`, title from YouTube oEmbed: `cavern Lv1`.
+- Dev log hub includes Week 1, Week 2, Week 3, Week 4, Week 5, Week 6, Week 7, Week 8, Week 10, Week 11, Week 12, Week 13, and Week 14 links.
 
 ## Design Problem
 
@@ -81,6 +87,18 @@ The available assets suggest a process built around the physical installation fi
 
 The best page story is therefore not just "we made an underwater shooter." It is "we designed for a rare room-scale display system, then made game and level decisions around what that room makes possible and what its hardware limits."
 
+## Original Wix Page Logic
+
+The old CAVERN page appears to be compact and evidence-led rather than a long written case study. The contact sheet has only two strong project assets: a dense one-page design/system document and a large in-room playtest/final photo. That means the original page logic likely depended on scale and proof:
+
+- Start with the CAVERN room/photo because it immediately explains the unusual platform: multiple players standing inside a wraparound underwater projection with shared UI.
+- Use the one-page design document as the explanatory core. It contains the platform constraints, hardware/input assumptions, player count, movement model, stages, goals, and backup plans.
+- Keep text short around the diagram because the diagram is doing the heavy explanatory work.
+- Preserve a slot for trailer/dev-log links. Public URLs are now confirmed for the dev log hub and a Level 1 YouTube video.
+- Avoid filling the page with generic game-project copy. CAVERN's story is "designing for a 270-degree CAVE system" first, and underwater shooting/protection mechanics second.
+
+For the rebuild, the correct rhythm is: immersive room hero -> public Level 1 video -> system constraints diagram -> stage/mechanic explanation -> dev-log process strip -> installation/playtest evidence -> dev-log link. The page should not become a generic gallery with repeated duplicate images.
+
 ## Visual Asset Interpretation
 
 | Asset | Type | What It Shows | Recommended Use |
@@ -94,21 +112,23 @@ The best page story is therefore not just "we made an underwater shooter." It is
 | Contact sheet item 2 and 5 / Tao logo | `discard` | Tao Design identity/logo asset. | Do not use except site branding. |
 | Contact sheet item 3 / `a04444_6332...jpg` | `diagram`, `mechanic`, `context` | The CAVERN project one-page diagram, including space constraints, controller plan, shooting mechanic, player route, three-stage level design, and goals. | Use prominently for process/mechanics. This is the best explanatory artifact. |
 | Contact sheet item 4 / `a04444_f1fd...jpg` | `hero`, `playtest`, `final` | In-room photo of players inside the underwater CAVERN projection. Shows scale, group play, and final installation feel. | Use as hero/final image. Strongest visual asset for the project. |
+| `https://youtu.be/TGdCYzSnRDs` | `video`, `prototype`, `final` | YouTube video titled `cavern Lv1`. Public moving footage of the Level 1 experience. | Use near the top after the hero, as the main motion proof of the experience. Render as responsive YouTube embed with a fallback link. |
+| `https://projects.etc.cmu.edu/cavern/blog/` | `process`, `documentation` | Public ETC dev log hub with weekly posts and process images. | Use as an external process link and, if assets are later migrated, as the source for a small weekly process strip. |
 
 ## Page Sections To Build
 
 1. Hero: use the in-room CAVERN photo with a one-liner about a 3-5 player underwater co-op experience for a 270-degree projection system.
-2. Platform Context: explain the CAVERN room, curved screens, ODS/stereo setup, and why this was a location-based design challenge.
-3. Design Constraints: show hardware/input limits, no head tracking, shooting deviation, and backup plans.
-4. Gameplay Structure: explain the underwater route, shooting interaction, ship protection, contaminated coral, robotic monsters, and flashlight finale.
-5. Level Design: describe the three stages: discovery, protection, finale.
-6. Playtest / Installation: use the in-room photo to discuss on-site testing, player behavior, feedback, and iteration, staying within confirmed evidence.
-7. Handoff: mention documentation/dev logs/trailer placeholders only after URLs or final artifacts are confirmed.
+2. Level Video: embed `cavern Lv1` as the first motion proof, with a fallback YouTube link.
+3. Platform Context: explain the CAVERN room, curved screens, ODS/stereo setup, and why this was a location-based design challenge.
+4. Design Constraints: show hardware/input limits, no head tracking, shooting deviation, and backup plans.
+5. Gameplay Structure: explain the underwater route, shooting interaction, ship protection, contaminated coral, robotic monsters, and flashlight finale.
+6. Dev Log Process: link the public dev log hub and optionally show selected process images after they are migrated locally.
+7. Playtest / Installation: use the in-room photo to discuss on-site testing, player behavior, feedback, and iteration, staying within confirmed evidence.
 
 ## Missing Information / Questions
 
-- What is the final public trailer URL, if any?
-- Are weekly dev logs still available and intended for the rebuilt page?
+- Confirmed public Level 1 video: `https://youtu.be/TGdCYzSnRDs`.
+- Confirmed public dev log hub: `https://projects.etc.cmu.edu/cavern/blog/`.
 - What does ODS stand for in the original project copy, and should the page spell it out for non-technical readers?
 - Was the final player count three, four, five, or variable?
 - Which input scheme shipped: Valve Index controllers, Vive trackers, POGO pins, fixed cannons, or another backup plan?

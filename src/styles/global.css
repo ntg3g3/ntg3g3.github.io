@@ -697,15 +697,35 @@ nav a:hover {
 }
 
 .visual-project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 0 34px;
-  color: var(--muted);
-  font-size: 0.92rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin: 8px 0 34px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 26px 0;
+  color: var(--ink);
+  font-size: 0.98rem;
+  text-align: center;
+}
+
+.visual-project-meta div {
+  display: grid;
+  gap: 9px;
+  justify-items: center;
+}
+
+.visual-project-meta strong {
+  font-size: 1rem;
 }
 
 .visual-project-meta span {
+  max-width: 250px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.visual-project-meta > span {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 8px 12px;
@@ -719,6 +739,64 @@ nav a:hover {
   align-items: start;
   border-top: 1px solid var(--line);
   padding: 34px 0 10px;
+}
+
+.visual-story-text-only {
+  grid-template-columns: minmax(0, 680px);
+}
+
+.visual-story-text-only .visual-story-copy p:not(.eyebrow) {
+  max-width: 680px;
+}
+
+.visual-story-wide,
+.visual-story-gallery,
+.visual-story-pair {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.visual-story-wide .visual-story-copy,
+.visual-story-gallery .visual-story-copy,
+.visual-story-pair .visual-story-copy,
+.visual-story-text-only .visual-story-copy {
+  position: static;
+}
+
+.visual-story-wide .visual-story-copy h2,
+.visual-story-gallery .visual-story-copy h2,
+.visual-story-pair .visual-story-copy h2 {
+  max-width: 880px;
+}
+
+.visual-story-wide .visual-story-copy p:not(.eyebrow),
+.visual-story-gallery .visual-story-copy p:not(.eyebrow),
+.visual-story-pair .visual-story-copy p:not(.eyebrow) {
+  max-width: 760px;
+}
+
+.visual-story-wide .visual-story-media {
+  grid-template-columns: 1fr;
+}
+
+.visual-story-wide .visual-story-media img {
+  max-height: none;
+}
+
+.visual-story-gallery .visual-story-media {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.visual-story-gallery .visual-story-media .visual-wide {
+  grid-column: 1 / -1;
+}
+
+.visual-story-pair .visual-story-media {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.visual-story-pair .visual-story-media .visual-wide {
+  grid-column: 1 / -1;
 }
 
 .visual-story-copy {
@@ -738,13 +816,38 @@ nav a:hover {
   line-height: 1.62;
 }
 
+.visual-story-points {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.visual-story-points article {
+  min-width: 0;
+}
+
+.visual-story-points h3 {
+  margin: 0 0 16px;
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.visual-story-points p {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.48;
+}
+
 .visual-story-media {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
+  align-items: start;
 }
 
 .visual-story-media figure {
+  align-self: start;
   overflow: hidden;
   margin: 0;
   border: 1px solid var(--line);
@@ -752,8 +855,22 @@ nav a:hover {
   background: #f3f0e8;
 }
 
+.image-open-link {
+  display: block;
+}
+
+.image-open-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
+
 .visual-story-media .visual-wide {
   grid-column: 1 / -1;
+}
+
+.visual-story-media .visual-compact {
+  width: min(100%, 640px);
+  justify-self: center;
 }
 
 .visual-story-media img {
@@ -761,6 +878,25 @@ nav a:hover {
   width: 100%;
   max-height: 760px;
   object-fit: contain;
+}
+
+.visual-story-media .visual-compact img {
+  max-height: 460px;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+}
+
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .visual-story-media figcaption {
@@ -1027,6 +1163,16 @@ nav a:hover {
 
   .visual-story-media {
     grid-template-columns: 1fr;
+  }
+
+  .visual-project-meta,
+  .visual-story-points {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .visual-project-meta div {
+    justify-items: start;
   }
 
   .case-study-media img {

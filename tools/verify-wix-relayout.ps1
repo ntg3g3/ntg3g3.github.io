@@ -263,7 +263,19 @@ await send("Emulation.setDeviceMetricsOverride", {
 const rows = [];
 for (const slug of slugs) {
   await send("Page.navigate", { url: `${site}/projects/${slug}/` });
-  await sleep(550);
+  for (let i = 0; i < 80; i += 1) {
+    const readyExpression = `JSON.stringify({
+      path: location.pathname,
+      ready: document.readyState,
+      sections: document.querySelectorAll('.visual-story-section').length
+    })`;
+    const readyResult = await send("Runtime.evaluate", { expression: readyExpression, returnByValue: true });
+    const ready = JSON.parse(readyResult.result.value);
+    if (ready.path === `/projects/${slug}/` && ready.ready !== "loading" && ready.sections > 0) {
+      break;
+    }
+    await sleep(150);
+  }
   const expression = `JSON.stringify({
     slug: ${JSON.stringify(slug)},
     vw: innerWidth,

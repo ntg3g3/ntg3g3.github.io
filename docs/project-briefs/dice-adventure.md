@@ -2,9 +2,11 @@
 
 ## Source Confidence
 
-High for the project premise, role, team, time span, and core mechanics because they are present in `src/data/projects.ts` and the Wix content inventory. Medium-high for visual interpretation because the Dice Adventure contact sheet contains many readable research, paper prototype, rules, UI, and build screenshots. Lower for final research outcomes, study results, release status, and exact implementation details because those are not present in the available artifacts.
+High for the project premise, role, team, time span, and core mechanics because they are present in `src/data/projects.ts` and the Wix content inventory. Medium-high for visual interpretation because the Dice Adventure contact sheet contains many readable research, paper prototype, rules, UI, and build screenshots. Lower for final research outcomes, study results, release status, and exact implementation details because those are not available to Yutao; any later AI-study use depends on the lab owner and should not be claimed on the portfolio page.
 
 Confirmed sources used: `docs/CONTENT_INVENTORY.md`, `assets/wix-originals/wix-assets-manifest.csv`, `docs/asset-contact-sheets/diceadventure.jpg`, `src/data/projects.ts`, and `public/images/projects/dice-adventure`.
+
+Asset recovery note: the current optimized page directory originally exposed only a subset of the Dice Adventure page assets. The Wix manifest contains 32 Dice Adventure asset rows, represented in `docs/asset-contact-sheets/diceadventure.jpg` as 31 visual items plus one additional manifest row. A full raw copy has been restored under `public/images/projects/dice-adventure/wix-originals`, and key missing assets have been copied into `public/images/projects/dice-adventure` with semantic names such as `early-grid-sketches.png`, `ui-state-board.png`, `level-iteration-board.png`, `low-poly-board-prototype.png`, `pixel-icons-sheet.png`, `obstacle-asset-sheet.png`, and `final-rules-sheet-alt.png`. Future layout work should treat the 13-image optimized set as incomplete. User-provided screenshots are only interpretation references and must not be used as website assets.
 
 ## Project One-Liner
 
@@ -24,7 +26,7 @@ Inferred: The central design challenge was translating research needs into a pla
 
 ## Audience / Use Case
 
-Primary audience: research participants in Human-Machine Teaming studies.
+Primary audience: Human-Machine Teaming researchers and potential study participants.
 
 Secondary audience: researchers and collaborators who need a controllable game environment for observing human-human and human-AI collaboration.
 
@@ -32,7 +34,7 @@ Use case: players take turns navigating a grid-based dungeon, share partial info
 
 ## My Role
 
-Confirmed role: Game Design, Level Design, Asymmetric Co-op.
+Confirmed role: Game Design, Level Design, Asymmetric Co-op. Yutao did not own the concrete implementation work; the public page should frame his contribution around overall game design, system design, level/tutorial design, research-to-mechanic translation, playtest support, and team communication.
 
 Confirmed contributions:
 
@@ -74,9 +76,24 @@ Mechanics:
 
 ## Process Story
 
-The project appears to move through four design layers. First, the team researched existing cooperative games and board games, visible in comparison boards and board-game reference images. Second, the team prototyped the concept as a physical board game and grid layout, using character tokens, tiles, dice, and hand-drawn or printed maps. Third, the design became a system of clear rules: vision limits, dice distributions, ping categories, obstacle conditions, and movement controls. Finally, the concept was implemented as a Unity-style digital prototype with a top-down 3D dungeon, UI for turns/actions/health, and large contextual overlays teaching dice interactions.
+The project appears to move through four design layers. First, the team researched existing cooperative games and board games, visible in comparison boards and board-game reference images. These images can remain public, but the rebuilt page must label them clearly as references rather than Yutao's project output. Second, the team prototyped the concept as a physical board game and grid layout, using character tokens, tiles, dice, and hand-drawn or printed maps. Third, the design became a system of clear rules: vision limits, dice distributions, ping categories, obstacle conditions, and movement controls. Finally, the technical team implemented the concept as a Unity-style digital prototype with a top-down 3D dungeon, UI for turns/actions/health, and large contextual overlays teaching dice interactions.
 
 This is a strong page candidate for a process-first case study: research constraints -> paper prototype -> mechanics -> level/tutorial design -> playable demo.
+
+## Original Wix Page Logic
+
+The old Dice Adventure page had a clearer long-form process rhythm than the craft/archive pages. It appears to present the project through large slide-like images and diagrams, with text acting as a guide rather than the main content.
+
+The original logic is:
+
+- Begin with the final playable prototype screenshot because it immediately shows the core game: turn-based dungeon play, characters, hearts/actions, altar state, and a large dice rule prompt.
+- Move backward into research and reference mapping. The board-game and co-op-game references explain why the team chose a turn-based structure and why board games were useful for manageable AI/research mechanics. They must be visually labeled as "Reference" so viewers do not mistake them for project output.
+- Show paper prototype and early level boards before final rules. These images explain how the team tested cooperation, map logic, and physical play before the digital version.
+- Use the final concept/rule sheets as major explanatory images. They carry essential information: three characters, different visibility ranges, dice distributions, obstacles, goal, altars, gates, and the pinning system.
+- Present level/tutorial progression as long/wide diagrams, not tiny thumbnails. These images are the main evidence of Yutao's level-design contribution.
+- End with digital prototype screenshots showing rock, monster, and trap dice prompts. These connect the abstract rules back to final gameplay.
+
+For the rebuild, the page should preserve this image-led process cadence. Use concise text as connective tissue, and let the large diagrams stay readable. Do not reduce the diagrams into decorative cards; Dice Adventure needs big, inspectable images because the mechanics live inside the diagrams.
 
 ## Visual Asset Interpretation
 
@@ -114,19 +131,25 @@ This is a strong page candidate for a process-first case study: research constra
 
 ## Page Sections To Build
 
-1. Hero: use the current cover screenshot and a concise one-liner about asymmetric co-op for Human-Machine Teaming research.
-2. Research Constraint: explain why the game needed partial information, non-verbal communication, strategic decisions, and measurable cooperation.
-3. System Design: show the three-character asymmetry, dice checks, obstacle types, and ping communication.
-4. Level and Tutorial Design: use grid layouts and progression maps to show how levels taught mechanics and created collaboration.
-5. Prototype Evolution: show board-game references, paper prototype, and digital implementation.
-6. Final Demo: show the polished gameplay screenshots for rock, monster, and trap interactions.
-7. Reflection / Research Fit: discuss how the design creates observable moments of coordination without inventing study results.
+1. Hero: use the final digital rock prompt screenshot and a concise one-liner about asymmetric co-op for Human-Machine Teaming research.
+2. Project facts and My Impact: restore the old-page deliverables / time span / team block and the five contribution statements.
+3. Overview and constraints: restore the old-page intro plus the four research constraints: in-game communication, in-game learning, strategy/decision making, and information asymmetry.
+4. Turn-based references: use scraped Wix assets such as `research-board.webp` and individual reference images; label them as reference material, not project output.
+5. Early maps and prototype boards: use the recovered grid sketches, low-poly board prototype, UI state board, and level-iteration board.
+6. Final concept: use scraped Wix rule sheets and compact supporting details such as dice matrix, obstacle rule table, goal map, and alternate rule sheet.
+7. Pinning focus: show the red and gray pinning diagrams as the core interaction, keeping text short.
+8. Level and tutorial design: use level progression, tutorial maps, and stage thumbnails as level-design evidence.
+9. Plan and Move: use `movement-spec.webp` from the scraped Wix assets; do not use screenshot crops.
+10. Prototype states and assets: use active-player feedback, obstacle assets, and icon explorations as supporting production/state evidence.
+11. Digital prototype: close with monster and trap dice prompts. Do not repeat the rock prompt because it is already the hero.
+
+See `docs/layout-plans/dice-adventure-asset-map.md` for the contact-sheet-to-file mapping and which recovered items should stay archive-only.
 
 ## Missing Information / Questions
 
 - What were the final study goals and research hypotheses from the HCII / ARL STRONG collaborators?
-- Was the game ultimately used with participants or AI agents? If yes, what outcomes can be shared publicly?
-- Which parts did Yutao personally implement versus design/specify?
+- Do not claim final study use or outcomes unless the lab owner provides public information.
+- Which parts did the technical team implement versus Yutao's design/specification work?
 - Are there playable build links, demo videos, or final reports that should be included?
 - Which reference images are safe to show publicly as inspiration, and which should be omitted to avoid implying ownership?
-- Was "Pheobe Wang" the intended spelling in the team list, or should it be "Phoebe Wang"?
+- Confirmed correction: teammate name should be spelled "Phoebe Wang".
